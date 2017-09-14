@@ -1,4 +1,4 @@
-# PASSER Feeder v1
+# PASSER Feeder v2
 
 The code expects a specific setup of the sensor hardware, consult the hardware instructions for the specifics. 
 
