@@ -1,4 +1,4 @@
-# "Passer" project
+# PASSER Feeder v1
 
 The code expects a specific setup of the sensor hardware, consult the hardware instructions for the specifics. 
 
