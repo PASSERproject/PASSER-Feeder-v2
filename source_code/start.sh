@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Filipowicz, J.; Ray, A.; Powell, M.
+# John Filipowicz; Andrew Ray; Mitchell Powell
 # Radford University
 
 # Purpose: Prep for and launch all necessary processes.
