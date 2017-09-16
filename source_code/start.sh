@@ -5,6 +5,9 @@
 
 # Purpose: Prep for and launch all necessary processes.
 
+# Reset the internal pi clock to the time given by the real time clock.
+sudo hwclock -r
+
 # Specify where to send the DHT data.
 CSV=/media/pi/FEEDER_DATA/DHT_data.csv
 
