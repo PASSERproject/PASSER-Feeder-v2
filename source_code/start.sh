@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# John Filipowicz
+# Filipowicz, J.; Ray, A.
 # Radford University
 
 # Purpose: Prep for and launch all necessary processes.
@@ -14,6 +14,4 @@ fi
 # Remove '#' and the space before it to redirect stderr & stdout to logs
 ./periodic.py & #>./Logs/periodic.log
 ./listener.py & #>./Logs/listener.log
-./programed_feeding.py & 
-#Dr. Ray's Program too
-
+./programed_feeding.py &
