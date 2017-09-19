@@ -52,3 +52,4 @@ while True:
 		else:
 			#print('below threshold')
 			time.sleep(sleep_miss);
+	time.sleep(60);
