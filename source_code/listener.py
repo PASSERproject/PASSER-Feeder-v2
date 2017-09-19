@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# John Filipowicz
+# John Filipowicz, Mitchell Powell
 # Radford University
 
 # The purpose of this file is to 'listen' for either a sizable pressure reading
@@ -8,6 +8,7 @@
 #    appropriate code is executed and the program shall loop.
 
 import time
+import datetime
 import RPi.GPIO as GPIO
 import sys
 import collect_data
@@ -39,15 +40,15 @@ vcnl = Adafruit_VCNL40xx.VCNL4010()
 
 
 while True:
-	#print('Pressure={0}  ,  Proximity={1}'.format(GPIO.input(pin), vcnl.read_proximity()))
-	if ((vcnl.read_proximity() > threshold) or GPIO.input(pin)):
-		#print('Triggered by sensor')
-		#collect_data.capture();
-		call(["./servo2.py", "&"])
-		call("./images.sh")
-                collect_data.collect();
-		#time.sleep(sleep_hit);
-	else:
-		#print('below threshold')
-		time.sleep(sleep_miss);
-
+	while ((datetime.time() > datetime.time(5,0,0)) and (datetime.time() < datetime.time(21,0,0))):
+		#print('Pressure={0}  ,  Proximity={1}'.format(GPIO.input(pin), vcnl.read_proximity()))
+		if ((vcnl.read_proximity() > threshold) or GPIO.input(pin)):
+			#print('Triggered by sensor')
+			#collect_data.capture();
+			call(["./servo2.py", "&"])
+			call("./images.sh")
+        	        collect_data.collect();
+			#time.sleep(sleep_hit);
+		else:
+			#print('below threshold')
+			time.sleep(sleep_miss);
