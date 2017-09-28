@@ -21,3 +21,6 @@ fi
 ./periodic.py & #>./Logs/periodic.log
 ./listener.py & #>./Logs/listener.log
 ./programed_feeding.py &
+
+# Purpose: To have Pi call the RTC upon booting, allowing for correct time in data collection
+sudo hwclock –r 
