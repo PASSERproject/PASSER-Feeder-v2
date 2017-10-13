@@ -20,7 +20,7 @@ root.overrideredirect(True)
 
 #Create a canvas
 #This will have to be updated to match the touch screen resolution
-canvas = Canvas(root, width=320, height=240)
+canvas = Canvas(root, width=480, height=320)
 canvas.pack()
 
 #Pick a random picture to display
