@@ -3,13 +3,14 @@ import threading
 import glob as g
 import random
 import time
+import math
 #Use Tkinter for Python2 and tkinter for Python3
 from Tkinter import *
 from PIL import Image
 from PIL import ImageTk
 from multiprocessing.connection import Listener
 
-# Andrew Ray
+# Andrew Ray, Mitchell Powell
 # Radford University
 
 #Variables here due to global requirements for threads/gui
@@ -20,7 +21,9 @@ root.overrideredirect(True)
 
 #Create a canvas
 #This will have to be updated to match the touch screen resolution
-canvas = Canvas(root, width=480, height=320)
+canvas_width=480
+canvas_height=320
+canvas = Canvas(root, width=canvas_width, height=canvas_height)
 canvas.pack()
 
 #Pick a random picture to display
@@ -32,10 +35,32 @@ def getImage(array, oldNum):
 		num = random.randrange(0,size)
 	return array[num],num
 
+#Scale the image to the screen using ratios
+def resizeImage(im):
+	# Get width and height of image
+	pic_width, pic_height = im.size
+
+	# If height is scaling factor, calculate scale based on height
+	if(float(pic_height)/pic_width > float(canvas_height)/canvas_width):
+		scale=float(canvas_height)/pic_height
+	# If width is scaling factor, calculatec scale based on width
+	else:
+		scale=float(canvas_width)/pic_width
+	# Scale the picture height and width
+	# abs and ceil are used to ensure a positive non-zero number
+	new_pic_height = int(math.ceil(abs(scale * pic_height)))
+	new_pic_width = int(math.ceil(abs(scale * pic_width)))
+
+	# Return the resized image
+	return im.resize((new_pic_width, new_pic_height),Image.ANTIALIAS)
+
 #Display an image on the canvas
 def displayImage(fileName, canvas):
 	# Load the image file
 	im = Image.open(fileName)
+	# Any picture other than background gets scaled
+	if(fileName != "images/background/black.jpg"):
+		im = resizeImage(im)
 	# Put the image into a canvas compatible class, and stick in an
 	# arbitrary variable to the garbage collector doesn't destroy it
 	canvas.image = ImageTk.PhotoImage(im)
