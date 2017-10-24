@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import socket
 import threading
 import glob as g
@@ -31,7 +32,7 @@ def getImage(array, oldNum):
 	size = len(array)
 	random.seed()
 	num = random.randrange(0,size)
-	while (num == oldNum or array[num] == "images/background/black.jpg" ):
+	while (num == oldNum or array[num] == "display_images/background/black.jpg" ):
 		num = random.randrange(0,size)
 	return array[num],num
 
@@ -59,7 +60,7 @@ def displayImage(fileName, canvas):
 	# Load the image file
 	im = Image.open(fileName)
 	# Any picture other than background gets scaled
-	if(fileName != "images/background/black.jpg"):
+	if(fileName != "display_images/background/black.jpg"):
 		im = resizeImage(im)
 	# Put the image into a canvas compatible class, and stick in an
 	# arbitrary variable to the garbage collector doesn't destroy it
@@ -70,7 +71,7 @@ def displayImage(fileName, canvas):
 #Show a black image
 def showBlack():
 	global canvas
-	displayImage("images/background/black.jpg", canvas)
+	displayImage("display_images/background/black.jpg", canvas)
 
 #Callback for thread when clicked that will
 #reset the screen to black after 1 second

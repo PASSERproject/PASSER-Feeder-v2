@@ -17,3 +17,7 @@ sudo python ./setup.py install
 cd ../Proximity
 sudo python ./setup.py install
 cd ../../Feeder/source_code
+
+curl -SLs https://apt.adafruit.com/add-pin | sudo bash
+sudo apt-get install -y raspberrypi-bootloader adafruit-pitft-helper raspberrypi-kernel
+sudo adafruit-pitft-helper -t 35r

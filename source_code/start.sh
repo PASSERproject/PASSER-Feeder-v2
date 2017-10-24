@@ -16,11 +16,12 @@ if [ ! -f "$CSV" ] ; then
 	echo "Temperature,Humidity,TimeStamp" >> "$CSV"
 fi
 
-# Start running periodic.py, listener.py, and programed_feeding.py in the background.
+# Start running periodic.py, listener.py, programed_feeding.py, and server.py in the background.
 # Remove '#' and the space before it to redirect stderr & stdout to logs.
 ./periodic.py & #>./Logs/periodic.log
 ./listener.py & #>./Logs/listener.log
 ./programed_feeding.py &
+./server.py &
 
 # Purpose: To have Pi call the RTC upon booting, allowing for correct time in data collection
 sudo hwclock –r 

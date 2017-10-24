@@ -1,7 +1,0 @@
-#Andrew Ray
-#Radford University
-
-sudo apt-get update
-sudo apt-get install python-imaging
-sudo apt-get install python-imaging-tk
-sudo apt-get install python3-pil.imagetk
