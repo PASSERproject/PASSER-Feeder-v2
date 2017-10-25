@@ -46,7 +46,7 @@ while True:
 		if ((vcnl.read_proximity() > threshold) or GPIO.input(pin)):
 			#print('Triggered by sensor')
 			#collect_data.capture();
-			call(["./client.py", "&"]
+			call(["./client.py", "&"])
 			call(["./servo2.py", "&"])
 			call("./images.sh")
         	        collect_data.collect();
