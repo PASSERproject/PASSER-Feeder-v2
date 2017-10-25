@@ -32,7 +32,7 @@ def getImage(array, oldNum):
 	size = len(array)
 	random.seed()
 	num = random.randrange(0,size)
-	while (num == oldNum or array[num] == "display_images/background/black.jpg" ):
+	while (num == oldNum):
 		num = random.randrange(0,size)
 	return array[num],num
 
@@ -44,7 +44,7 @@ def resizeImage(im):
 	# If height is scaling factor, calculate scale based on height
 	if(float(pic_height)/pic_width > float(canvas_height)/canvas_width):
 		scale=float(canvas_height)/pic_height
-	# If width is scaling factor, calculatec scale based on width
+	# If width is scaling factor, calculate scale based on width
 	else:
 		scale=float(canvas_width)/pic_width
 	# Scale the picture height and width
@@ -85,7 +85,7 @@ oldNum=0
 def callback(event):
 	#Get all of the images in the current directory
 	global oldNum
-	images = g.glob('images/*.jpg')
+	images = g.glob('display_images/*.jpg')
 	fileName,oldNum = getImage(images, oldNum)
 	displayImage(fileName, canvas)
 	t = threading.Thread(target=resetScreen)

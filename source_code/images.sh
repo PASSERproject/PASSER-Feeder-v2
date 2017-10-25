@@ -10,12 +10,12 @@ i=0
 
 location=/media/pi/FEEDER_DATA
 timestamp=$(date +"%m-%d-%Y_%H-%M-%S")
-mkdir -p $location/images/$timestamp
+mkdir -p $location/captured_images/$timestamp
 #rm $location/images/*.jpeg
 
 while [ $i -lt 10 ]
 do
-	streamer -f jpeg -r 640x480 -o $location/images/$timestamp/image$i.jpeg
+	streamer -f jpeg -r 640x480 -o $location/captured_images/$timestamp/image$i.jpeg
 	let i=i+1
 done
 

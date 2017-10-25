@@ -40,12 +40,13 @@ vcnl = Adafruit_VCNL40xx.VCNL4010()
 
 
 while True:
+	# Run between 5am & 9pm
 	while ((datetime.time() > datetime.time(5,0,0)) and (datetime.time() < datetime.time(21,0,0))):
 		#print('Pressure={0}  ,  Proximity={1}'.format(GPIO.input(pin), vcnl.read_proximity()))
 		if ((vcnl.read_proximity() > threshold) or GPIO.input(pin)):
 			#print('Triggered by sensor')
 			#collect_data.capture();
-			call(["python", "client.py"]
+			call(["./client.py", "&"]
 			call(["./servo2.py", "&"])
 			call("./images.sh")
         	        collect_data.collect();
