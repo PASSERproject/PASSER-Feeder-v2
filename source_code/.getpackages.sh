@@ -10,22 +10,22 @@
 
 
 # Update System
-apt-get update
+sudo apt-get update
 
 # Upgrade System
-apt-get upgrade
+sudo apt-get upgrade
 
 # Sensors
-apt-get install build-essential python-dev
+sudo apt-get install build-essential python-dev
 
 # Webcam
-apt-get install streamer imagemagick libav-tools libav-doc
+sudo apt-get install streamer imagemagick libav-tools libav-doc
 
 # Genetic Algorithm
-apt-get install libapache2-mod-php5 php5 php-pear apache2 apache2-utils
-apt-get install php5-xcache php5-mysql php5-curl php5-gd
+sudo apt-get install libapache2-mod-php5 php5 php-pear apache2 apache2-utils
+sudo apt-get install php5-xcache php5-mysql php5-curl php5-gd
 
 # Python Imaging Library and TKinter
-apt-get install python-imaging
-apt-get install python-imaging-tk
-apt-get install python3-pil.imagetk
+sudo apt-get install python-imaging
+sudo apt-get install python-imaging-tk
+sudo apt-get install python3-pil.imagetk
