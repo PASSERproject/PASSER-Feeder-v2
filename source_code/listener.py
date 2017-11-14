@@ -25,7 +25,7 @@ pin = 21
 threshold = 2600
 
 # Time to sleep between hits in seconds
-sleep_hit = 11
+sleep_hit = 14
 
 # Time to sleep between misses in seconds
 sleep_miss = .5
@@ -50,7 +50,7 @@ while True:
 		call(["./servo2.py", "&"])
 		call("./images.sh")
                	collect_data.collect();
-		#time.sleep(sleep_hit);
+		time.sleep(sleep_hit);
 	else:
 		#print('below threshold')
 		time.sleep(sleep_miss);
