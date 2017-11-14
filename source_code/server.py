@@ -5,11 +5,13 @@ import glob as g
 import random
 import time
 import math
+import datetime
 #Use Tkinter for Python2 and tkinter for Python3
 from Tkinter import *
 from PIL import Image
 from PIL import ImageTk
 from multiprocessing.connection import Listener
+from time import gmtime, strftime, sleep
 
 # Andrew Ray, Mitchell Powell
 # Radford University
@@ -26,6 +28,7 @@ canvas_width=480
 canvas_height=320
 canvas = Canvas(root, width=canvas_width, height=canvas_height)
 canvas.pack()
+displayTime=time.localtime()
 
 #Pick a random picture to display
 def getImage(array, oldNum):
@@ -76,23 +79,60 @@ def showBlack():
 #Callback for thread when clicked that will
 #reset the screen to black after 1 second
 def resetScreen():
-	time.sleep(1)
+	time.sleep(3)
 	showBlack()
 
 #Down here so I can use global variables
 #Yes I know this is evil, but it is forced due to GUIs...
 oldNum=0
+init=0
 def callback(event):
 	#Get all of the images in the current directory
 	global oldNum
-	images = g.glob('display_images/*.jpg')
-	fileName,oldNum = getImage(images, oldNum)
-	displayImage(fileName, canvas)
-	t = threading.Thread(target=resetScreen)
-	t.start()
+	global init
+	global displayTime
+	go=0
+
+	#Determine if we have a multi-fire issue and only display once every 3 seconds
+	if (init ==0):
+		go=1
+		init=1
+		displayTime=time.localtime()
+
+	if (init==1):
+		testTime = time.localtime()
+		H1 = displayTime.tm_hour
+		M1 = displayTime.tm_min
+		S1 = displayTime.tm_sec
+		H2 = testTime.tm_hour
+		M2 = testTime.tm_min
+		S2 = testTime.tm_sec
+
+		diffTime=0
+		if (H2 != H1 or M2 !=M1):
+			diffTime=1
+		elif (S2-S1 > 10):
+			diffTime=1
+		if (diffTime == 1):
+			go=1
+			displayTime = testTime
+	if (go == 1):
+		images = g.glob('display_images/*.jpg')
+		fileName,oldNum = getImage(images, oldNum)
+		#Write to disk
+		logFile = "/media/pi/FEEDER_DATA/screenPictureLog.csv"
+		f = open(logFile, "a+")
+		record = str(displayTime.tm_year) + "," + str(displayTime.tm_mon) + "," + str(displayTime.tm_mday) + "," + str(H2) + "," + str(M2) + "," + str(S2) + "," + str(fileName)
+		f.write(record)
+		f.write("\n")
+		f.close()
+		#Put image on screen
+		displayImage(fileName, canvas)
+		t = threading.Thread(target=resetScreen)
+		t.start()
 
 #Setup the mouse click callback
-canvas.bind("<Button-1>", callback)
+#canvas.bind("<Button-1>", callback)
 
 #Networking code to listen on port 12345
 def createSocket():
