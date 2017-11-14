@@ -50,7 +50,7 @@ while True:
 		call(["./servo2.py", "&"])
 		call("./images.sh")
                	collect_data.collect();
-		time.sleep(sleep_hit);
+		#time.sleep(sleep_hit);
 	else:
 		#print('below threshold')
 		time.sleep(sleep_miss);
