@@ -3,9 +3,9 @@
 import RPi.GPIO as GPIO
 import time
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(12,GPIO.OUT)
+GPIO.setup(16,GPIO.OUT)
 freq=50
-pwm = GPIO.PWM(12, freq)
+pwm = GPIO.PWM(16, freq)
 leftPosition = 0.75
 rightPosition = 2.5
 middlePosition = (rightPosition - leftPosition) /2 + leftPosition
