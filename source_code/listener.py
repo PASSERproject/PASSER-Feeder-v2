@@ -22,7 +22,7 @@ import Adafruit_VCNL40xx
 pin = 21
 
 # Threshold for Proximity sensor
-threshold = 2600
+threshold = 2475
 
 # Time to sleep between hits in seconds
 sleep_hit = 14

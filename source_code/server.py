@@ -77,9 +77,9 @@ def showBlack():
 	displayImage("display_images/background/black.jpg", canvas)
 
 #Callback for thread when clicked that will
-#reset the screen to black after 1 second
+#reset the screen to black after 5 seconds
 def resetScreen():
-	time.sleep(3)
+	time.sleep(5)
 	showBlack()
 
 #Down here so I can use global variables
