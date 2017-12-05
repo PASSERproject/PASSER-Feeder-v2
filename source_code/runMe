@@ -1,3 +1,3 @@
 #!/bin/bash
 sleep 2
-lxterminal --working-directory=/home/pi/image -e python3 /home/pi/image/server.py
+lxterminal --working-directory=/home/pi/PASSER-Feeder-v2/source_code -e python3 /home/pi/PASSER-Feeder-v2/source_code/server.py
