@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import socket               # Import socket module
 
 # Andrew Ray

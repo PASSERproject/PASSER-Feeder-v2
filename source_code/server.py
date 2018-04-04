@@ -32,6 +32,7 @@ displayTime=time.localtime()
 
 #Pick a random picture to display
 def getImage(array, oldNum):
+
 	size = len(array)
 	random.seed()
 	num = random.randrange(0,size)
@@ -119,6 +120,7 @@ def callback(event):
 	if (go == 1):
 		images = g.glob('display_images/*.jpg')
 		fileName,oldNum = getImage(images, oldNum)
+
 		#Write to disk
 		logFile = "/media/pi/FEEDER_DATA/screenPictureLog.csv"
 		f = open(logFile, "a+")
@@ -126,6 +128,10 @@ def callback(event):
 		f.write(record)
 		f.write("\n")
 		f.close()
+		h=open("server_out.txt", "a+")
+		h.write("made it")
+		h.close()
+
 		#Put image on screen
 		displayImage(fileName, canvas)
 		t = threading.Thread(target=resetScreen)
@@ -145,9 +151,10 @@ def createSocket():
 	s.listen(5)                 # Now wait for client connection.
 	while True:
 		c, addr = s.accept()     # Establish connection with client.
+
 		#Hack to trigger the change of image, doesn't actually receive data
 		doh=3
-		callback(doh)
+		callback(doh)		
 
 #Setup networking in a different thread
 t = threading.Thread(target=createSocket)

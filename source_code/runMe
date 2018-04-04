@@ -1,3 +1,5 @@
 #!/bin/bash
-sleep 2
-lxterminal --working-directory=/home/pi/PASSER-Feeder-v2/source_code -e python /home/pi/PASSER-Feeder-v2/source_code/server.py
+#sleep 2
+cd /home/pi/Feeder/source_code
+sudo ./start.sh
+lxterminal --working-directory=/home/pi/Feeder/source_code -e /home/pi/Feeder/source_code/server.py

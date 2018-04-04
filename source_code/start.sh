@@ -18,7 +18,8 @@ fi
 
 # Start running periodic.py, listener.py, programed_feeding.py, and server.py in the background.
 # Remove '#' and the space before it to redirect stderr & stdout to logs.
-./periodic.py & #>./Logs/periodic.log
-./listener.py & #>./Logs/listener.log
-./programed_feeding.py &
-./server.py &
+#cd /home/pi/Feeder/source_code
+sudo ./periodic.py & #> ./Logs/periodic.log
+sudo ./listener.py & #> ./Logs/listener.log
+#./programed_feeding.py &
+#./server.py &
