@@ -13,9 +13,10 @@ timestamp=$(date +"%m-%d-%Y_%H-%M-%S")
 mkdir -p $location/captured_images/$timestamp
 #rm $location/images/*.jpeg
 
-while [ $i -lt 10 ]
+while [ $i -lt 3 ]
 do
-	streamer -f jpeg -r 640x480 -o $location/captured_images/$timestamp/image$i.jpeg
+	fswebcam -D 1 -r 640x480 --jpeg 85 $location/captured_images/$timestamp/image$i.jpeg
+	#sudo streamer -f JPEG -r 640x480 -o $location/captured_images/$timestamp/image$i.jpeg
 	let i=i+1
 done
 

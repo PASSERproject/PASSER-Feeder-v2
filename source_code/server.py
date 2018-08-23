@@ -24,8 +24,8 @@ root.overrideredirect(True)
 
 #Create a canvas
 #This will have to be updated to match the touch screen resolution
-canvas_width=480
-canvas_height=320
+canvas_width=720
+canvas_height=480
 canvas = Canvas(root, width=canvas_width, height=canvas_height)
 canvas.pack()
 displayTime=time.localtime()
@@ -145,16 +145,16 @@ def createSocket():
 	print("Socket created")
 	s = socket.socket()         # Create a socket object
 	host = socket.gethostname() # Get local machine name
-	port = 12345                # Reserve a port for your service.
-	s.bind((host, port))        # Bind to the port
+	port = 12346                # Reserve a port for your service.
+	print(s.bind((host, port)))        # Bind to the port
 
-	s.listen(5)                 # Now wait for client connection.
+	print(s.listen(5))                 # Now wait for client connection.
 	while True:
 		c, addr = s.accept()     # Establish connection with client.
 
 		#Hack to trigger the change of image, doesn't actually receive data
 		doh=3
-		callback(doh)		
+		print(callback(doh))		
 
 #Setup networking in a different thread
 t = threading.Thread(target=createSocket)
